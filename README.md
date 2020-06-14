@@ -1,10 +1,10 @@
 # Anime LP3 N1
 
 Trabalho N1 de LP3.
-Web api desenvolvida em java com tomcat e banco de dados postgres em nuvem
+Web api desenvolvida em java, com tomcat e banco de dados postgres em nuvem. Para rodar o server é necessário apenas subir o projeto localmente.
 
 # Banco de dados (schema)
-
+![alt text](https://github.com/LucasBoulle/LP3-N1/blob/master/schema-db.png?raw=true)
 
 # Endpoints 
 ```sh
@@ -13,8 +13,22 @@ Web api desenvolvida em java com tomcat e banco de dados postgres em nuvem
 /PublisherApi
 /TitleApi
 ```
+ - Cada endpoint possui 4 funcções de insert, update, delete e find e são acessados da seguinte forma:
+    - Para requisições `PUT` é utilizado para insert e update
+    - para requisições `DELETE` é utilizado para delete
+    - Para requisições `GET` é utilizado para find
  - Para testes locais utitlize a url base como `http://localhost:9091/LP3-N1`
- - Os formatos das responses são em JSON
+ - Os formatos das responses são em JSON, exemplo:
+ ![alt text](https://github.com/LucasBoulle/LP3-N1/blob/master/lp3Response.png?raw=true)
+## Tabela Demographics
+Tabela pré -preenchida com os tipos demográficos em que se enquadram os títulos, são eles e seus respectivos ids:
+| Nome | id |
+| ------ | ------ |
+| Shounen | 1 |
+| Shoujo | 2 |
+| Seinen | 3 |
+| Josei | 4 |
+| Kodomomuke | 5 |
 
 ## UserApi
 Endpoint utilizado para cadastrar, atualizar, deletar e criar usuários do sistema
@@ -27,6 +41,7 @@ Exemplo de criação (PUT):
 | nickname | string |
 | email | string |
 | profileImageUrl | string (url) |
+| id | int (opcional, caso seja desejado fazer update no registro em questão ) |
 
 
 
@@ -40,6 +55,7 @@ Exemplo de criação (PUT):
 | ------ | ------ |
 | fullName | string |
 | owner | string |
+| id | int (opcional, caso seja desejado fazer update no registro em questão ) |
 
 ## TitleApi
 Endpoint utilizado para cadastrar, atualizar, deletar e criar títulos do sistema
@@ -51,10 +67,11 @@ Exemplo de criação (PUT):
 | ------ | ------ |
 | title | string |
 | genre | string |
-| demographicId | int (correspondente a tabela [demographics][df1]) |
+| demographicId | int (correspondente a tabela demographics |
 | publisherId | int |
 | publishedAt | string (formato: `yyy-MM-dd`) |
 | bannerImageUrl | string (url) |
+| id | int (opcional, caso seja desejado fazer update no registro em questão ) |
 
 ## RatingApi
 Endpoint utilizado para cadastrar, atualizar, deletar e criar reviews do sistema
@@ -68,29 +85,4 @@ Exemplo de criação (PUT):
 | comment | string |
 | userId | int |
 | titleId | int |
-
-
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
-
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
-   [node.js]: <http://nodejs.org>
-   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
-   [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
-   [AngularJS]: <http://angularjs.org>
-   [Gulp]: <http://gulpjs.com>
-
-   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
-   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
-   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
-   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
-   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
+| id | int (opcional, caso seja desejado fazer update no registro em questão ) |
