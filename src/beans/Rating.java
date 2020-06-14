@@ -1,9 +1,15 @@
 package beans;
 
+import java.sql.Date;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Rating {
 	private int id;
 	private int rating;
-	private String createdAt;
+	private String comment;
+	private Date createdAt;
 	private Title title;
 	private User user;
 	
@@ -19,10 +25,10 @@ public class Rating {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	public String getCreatedAt() {
+	public Date getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(String createdAt) {
+	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 	public Title getTitle() {
@@ -36,5 +42,24 @@ public class Rating {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	
+	public JSONObject toJson() throws JSONException {
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("id", this.id);
+		jsonObj.put("rating", this.rating);
+		jsonObj.put("comment", this.comment);
+		jsonObj.put("createdAt", this.createdAt);
+		jsonObj.put("title", this.title.toJson());
+		jsonObj.put("user", this.user.toJson());
+
+		return jsonObj;
 	}
 }

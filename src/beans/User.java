@@ -56,6 +56,7 @@ public class User {
 
 	public JSONObject toJson() throws JSONException {
 		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("id", this.id);
 		jsonObj.put("nickname", this.nickname);
 		jsonObj.put("email", this.email);
 		jsonObj.put("profileImageUrl", this.profileImageUrl);

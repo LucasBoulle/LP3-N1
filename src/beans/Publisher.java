@@ -1,9 +1,14 @@
 package beans;
 
+import java.sql.Date;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Publisher {
 	private int id;
 	private String fullName;
-	private String createdAt;
+	private Date createdAt;
 	private String ownerName;
 	
 	public int getId() {
@@ -20,10 +25,10 @@ public class Publisher {
 		this.fullName = fullName;
 	}
 	
-	public String getCreatedAt() {
+	public Date getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(String createdAt) {
+	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 	
@@ -32,5 +37,14 @@ public class Publisher {
 	}
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
+	}
+	
+	public JSONObject toJson() throws JSONException {
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("fullName", this.fullName);
+		jsonObj.put("createdAt", this.createdAt.toString());
+		jsonObj.put("ownerName", this.ownerName);
+
+		return jsonObj;
 	}
 }

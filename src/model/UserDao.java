@@ -25,7 +25,7 @@ public class UserDao implements Dao<User> {
 			preparedStatement.setString(3, user.getProfileImageUrl());
 			preparedStatement.setDate(4, user.getCreatedAt());
 
-			preparedStatement.execute();
+			preparedStatement.executeQuery();
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class UserDao implements Dao<User> {
 	}
 
 	@Override
-	public Object find(int id) throws SQLException {
+	public User find(int id) throws SQLException {
 
 		User user = new User();
 
@@ -64,10 +64,13 @@ public class UserDao implements Dao<User> {
 		ResultSet rs = preparedStatement.executeQuery();
 
 		if (rs.next()) {
+			user.setId(rs.getInt("id"));
 			user.setNickname(rs.getString("nickname"));
 			user.setEmail(rs.getString("email"));
 			user.setProfileImageUrl(rs.getString("profileImageUrl"));
 			user.setCreatedAt(rs.getDate("createdAt"));
+		} else {
+			throw new SQLException("Uuário  não encontrado!");
 		}
 
 		return user;
